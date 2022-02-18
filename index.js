@@ -4,6 +4,7 @@ const { Router } = express
 const productos = Router()
 const carrito = Router()
 const fs = require('fs')
+const { networkInterfaces } = require('os')
 
 let arrayProductos = []
 let arrayCarrito = []
@@ -24,17 +25,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/api/productos', productos)
 app.use('/api/carrito', carrito)
 
-app.use((err, req, res, next) => {
-    console.error(err.stack)
-    res.status(500).send({ error: -2, descripcion: `ruta 'x', método 'y' no implementada` })
-}) 
-
 productos.get('/:id?', (req, res) => {
     let id = req.params.id
-
-    if (err){
-        console.log(err)
-    }
     if (id == undefined) {
         if (arrayProductos.length != 0) {
             res.send(arrayProductos)
@@ -66,8 +58,9 @@ productos.post('/', (req, res) => {
         idProducto++
         fs.writeFileSync('./productos.txt', JSON.stringify(arrayProductos))
     } else {
-        res.send({ error: -1, descripcion: "Ruta '/api/productos/' método POST no autorizada" })
+        res.send({ error: -1, descripcion: `Ruta '${req.url}', método '${req.method}' no autorizada` })
     }
+    
 })
 
 productos.put('/:id', (req, res) => {
@@ -79,7 +72,7 @@ productos.put('/:id', (req, res) => {
         } else {
             arrayProductos[id - 1].timestamp = date()
             arrayProductos[id - 1].nombre = req.body.nombre
-            arrayProductos[id - 1].descipcion = req.body.descripcion
+            arrayProductos[id - 1].descripcion = req.body.descripcion
             arrayProductos[id - 1].codigo = req.body.codigo
             arrayProductos[id - 1].precio = req.body.precio
             arrayProductos[id - 1].imagen = req.body.imagen
@@ -88,7 +81,7 @@ productos.put('/:id', (req, res) => {
             fs.writeFileSync('./productos.txt', JSON.stringify(arrayProductos))
         }
     } else {
-        res.send({ error: -1, descripcion: "Ruta '/api/productos/' método POST no autorizada" })
+        res.send({ error: -1, descripcion: `Ruta '${req.url}', método '${req.method}' no autorizada` })
     }
 })
 
@@ -99,7 +92,7 @@ productos.delete('/:id', (req, res) => {
         res.send(arrayProductos)
         fs.writeFileSync('./productos.txt', JSON.stringify(arrayProductos))
     } else {
-        res.send({ error: -1, descripcion: "Ruta '/api/productos/' método POST no autorizada" })
+        res.send({ error: -1, descripcion: `Ruta '${req.url}', método '${req.method}' no autorizada` })
     }
 })
 
@@ -161,11 +154,13 @@ carrito.delete('/:id/productos/:id_prod', (req, res) => {
 
 })
 
- 
+app.use((req, res) => {
+    res.status(500).send({ error: -2, descripcion: `ruta '${req.url}', método '${req.method}' no implementada` })
+}) 
 
 const PORT = 8080 || process.env.PORT
 
 const server = app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto: ${PORT}`)
 })
-server.on("error", (error) => console.log(error));
+server.on("error", (error) => console.log("hola", error));
