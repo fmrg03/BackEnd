@@ -1,1 +1,0 @@
-[{"id":1,"timestamp":"18/2/2022 - 0:42:5","nombre":"ddd321321321312321321d","descripcion":"h333321321231321la","precio":"32321","imagen":"2332132100","stock":"30","codigo":"xxxxxxxx"},{"id":2,"timestamp":"18/2/2022 - 0:41:51","nombre":"ddddddddddd","descripcion":"h333321321231321la","precio":"32321","imagen":"2332132100","stock":"30","codigo":"xxxxxxxx"}]
