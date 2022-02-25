@@ -147,10 +147,10 @@ class Server {
 
         carrito.post('/:id/productos', (req, res) => {
             let id = req.params.id
-            let producto = leerArchivo('./outputs/productos.txt').filter(producto => producto.id == id)
-            let carritosTodos = leerArchivo('./outputs/carrito.txt').filter(carrito => carrito.id != idCarrito)
+            let producto = leerArchivo('./outputs/productos.txt').filter(producto => producto.id == req.body.id_prod)
+            let carritosTodos = leerArchivo('./outputs/carrito.txt').filter(carrito => carrito.id != id)
             if (producto.length != 0) {
-                let dataCarrito = leerArchivo('./outputs/carrito.txt').filter(carrito => carrito.id == idCarrito)
+                let dataCarrito = leerArchivo('./outputs/carrito.txt').filter(carrito => carrito.id == id)
                 if (dataCarrito.length != 0) {
                     dataCarrito[0].productos.push(producto[0])
                     carritosTodos.push(dataCarrito[0])

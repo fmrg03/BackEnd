@@ -27,7 +27,18 @@ Localmente, luego de iniciar el servidor, se puede acceder a la API de la siguie
 Cabe destacar que existe una variable booleana para indicar si el usuario es administrador o no, y pueda acceder a ciertos endpoints teniendo los privilegios; actualmente esta variable se encuentra hardcodeada en _TRUE_, por tanto todos los endpoints serán accesibles.
 ##EndPoints
 
-Como anteriormente se nombró, existen dos rutas bases, una para _productos_ y otra para _carrito_, y se pueden usar los endpoints de la siguiente forma:
+Como anteriormente se nombró, existen dos rutas bases, una para _productos_ y otra para _carrito_. Para usar la API, se puede usar [Postman](https://www.postman.com) y se pueden usar los endpoints de la siguiente forma:
+
+Tomando en cuenta que para usar ciertos Endpoints se debe enviar en el body del request en formato JSON:
+
+- Agregar los productos, se deben ingresar los keys con sus respectivos values _(**keys:** nombre, precio, descripcion, imagen, stock, categoria)_, ejemplo:
+
+    ***{"nombre": "Arroz", "descripcion": "Arroz en Granos", "precio": 180, "imagen": "XXXXXXX", "stock": 12}***
+
+- Agregar un producto al carrito, de debe ingresar el id del producto  _(id_prod)_ que se desea agregar al carrito, ejemplo:
+
+    ***{"id_prod": 1}***
+
 
 ***Ruta Productos:*** _/api/productos_
 
@@ -41,5 +52,5 @@ Como anteriormente se nombró, existen dos rutas bases, una para _productos_ y o
 - **POST :** '/' - Crea un carrito y devuelve su id.
 - **DELETE :** '/:id' - Vacía un carrito y lo elimina.
 - **GET :** '/:id/productos' - Me permite listar todos los productos guardados en el carrito
-- **POST :** '/:id/productos' - Para incorporar productos al carrito por su id de producto
+- **POST :** '/:id/productos' - Para incorporar productos al carrito (id del carrito se coloca en la url) por su id de producto (se ingresa el id del producto en el body del request)
 - **DELETE :** '/:id/productos/:id_prod' - Eliminar un producto del carrito por su id de carrito y de producto
