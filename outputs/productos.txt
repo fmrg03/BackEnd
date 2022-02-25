@@ -1,1 +1,0 @@
-[{"id":1,"timestamp":"25/2/2022 - 12:35:22","nombre":"Aceite","descripcion":"Aceite Vegetal","precio":300,"imagen":"xxxx","stock":20},{"id":2,"timestamp":"25/2/2022 - 12:35:31","nombre":"Arrox","descripcion":"arrox Vegetal","precio":4300,"imagen":"xxxx","stock":20}]
