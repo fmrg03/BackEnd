@@ -31,15 +31,15 @@ Como anteriormente se nombró, existen dos rutas bases, una para _productos_ y o
 
 ***Ruta Productos:*** _/api/productos_
 
-- **GET**: '/:id?' - Para obtener todos los productos disponibles o un producto por su id. (disponible para usuarios y administradores)
-- **POST:** '/' - Para incorporar productos al listado (disponible para administradores)
-- **PUT:** '/:id' - Actualiza un producto por su id (disponible para administradores)
-- **DELETE:** '/:id' - Borra un producto por su id (disponible para administradores)
+- **GET :** '/:id?' - Para obtener todos los productos disponibles o un producto por su id. (disponible para usuarios y administradores)
+- **POST :** '/' - Para incorporar productos al listado (disponible para administradores)
+- **PUT :** '/:id' - Actualiza un producto por su id (disponible para administradores)
+- **DELETE :** '/:id' - Borra un producto por su id (disponible para administradores)
 
 ***Ruta Carrito:*** _/api/carrito_
 
-- **POST:** '/' - Crea un carrito y devuelve su id.
-- **DELETE:** '/:id' - Vacía un carrito y lo elimina.
-- **GET:** '/:id/productos' - Me permite listar todos los productos guardados en el carrito
-- **POST:** '/:id/productos' - Para incorporar productos al carrito por su id de producto
-- **DELETE:** '/:id/productos/:id_prod' - Eliminar un producto del carrito por su id de carrito y de producto
+- **POST :** '/' - Crea un carrito y devuelve su id.
+- **DELETE :** '/:id' - Vacía un carrito y lo elimina.
+- **GET :** '/:id/productos' - Me permite listar todos los productos guardados en el carrito
+- **POST :** '/:id/productos' - Para incorporar productos al carrito por su id de producto
+- **DELETE :** '/:id/productos/:id_prod' - Eliminar un producto del carrito por su id de carrito y de producto
